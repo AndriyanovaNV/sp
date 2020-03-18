@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 6. Методы для работы с атрибутами и фильтрами</title>
+<meta http-equiv="KEYWORDS" content="jQuery">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматриваются методы работы с атрибутами и фильтрами.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <!--<link rel="stylesheet" type="text/css" href="./css/style.css" />-->
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+      <script>
+          //задаём массив изображений для анимации
+          var images = ['./images/sv_kletka.gif', 
+          './images/sv_shashka.gif', 
+          './images/tem_kletka.gif', 
+          './images/tem_shashka.gif'];
+            //при загрузке докумнта
+          function myFunc()
+          { 
+              var i = 0;
+              //задаём интревал для анимации
+              setInterval(()=>{
+                  //для тега img меняем изображение из массива
+                $("#mainImg").attr({src:images[i % 4], alt:images[i % 4]});
+            i++;
+            //частота смены изображения 1 сек
+        }, 1000);
+          }
+          //настраиваем слайдер
+          $(function(){$( "#slider" ).slider(
+            {
+                //задаём обработчик собчтия переменщения слайдера
+                 slide: function( event, ui ) {
+                     //если текущее значение чётное, то скрываем изображение
+                     ui.value % 2 == 0 ? $("#imgSlider").css("display", "none")
+                     //иначе отображаем картинку
+                     :$("#imgSlider").css("display", "block");
+                 }
+            }
+          );});
+
+         window.onload = myFunc;
+      </script>
+</head>
+<body>
+    картинка
+    <div>
+        <img id="mainImg" src="./images/sv_kletka.gif">
+    </div>
+    слайдер
+    <div id="slider" style="width:30%">
+    </br>
+    <img id="imgSlider" src="./images/sv_kletka.gif"></div>
+</body>
+
+
